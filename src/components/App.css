@@ -1,0 +1,17 @@
+#root {
+  color: $4d4d4d;
+  font: 14px 'Helvetica Neue', Helvetical, Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 850px;
+  min-width: 550px;
+  text-align: center;
+}
+
+.about {
+  margin: 0 auto;
+}
+
+.about .technologies {
+  margin: 40px auto;
+  max-width: 300px;
+}
