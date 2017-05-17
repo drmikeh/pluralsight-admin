@@ -5,44 +5,53 @@ import delay from './delay';
 // All calls return promises.
 const courses = [
   {
-    id: "react-flux-building-applications",
-    title: "Building Applications in React and Flux",
+    id: "react-intro",
+    title: "Building Modern SPA Applications with ReactJS",
     watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
-    authorId: "cory-house",
-    length: "5:08",
-    category: "JavaScript"
+    authorId: "shane-barringer",
+    length: "4 days",
+    category: "SPA Frameworks"
   },
   {
-    id: "clean-code",
-    title: "Clean Code: Writing Code for Humans",
+    id: "restful-apis-with-express",
+    title: "Building RESTful APIs with NodeJS and Express",
     watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
-    authorId: "cory-house",
-    length: "3:10",
-    category: "Software Practices"
+    authorId: "mike-hopper",
+    length: "4 days",
+    category: "Server Side Development",
+    tags: 'javascript, server, nodejs'
   },
   {
-    id: "architecture",
-    title: "Architecting Applications for the Real World",
+    id: "angular-intro",
+    title: "Introduction to Angular 2 (no, make that 4)",
     watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
-    authorId: "cory-house",
-    length: "2:52",
-    category: "Software Architecture"
+    authorId: "brandon-kearns",
+    length: "3 days",
+    category: "SPA Frameworks"
   },
   {
-    id: "career-reboot-for-developer-mind",
-    title: "Becoming an Outlier: Reprogramming the Developer Mind",
+    id: "react-advanced",
+    title: "Advanced React",
     watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
-    authorId: "cory-house",
-    length: "2:30",
-    category: "Career"
+    authorId: "shane-barringer",
+    length: "3 days",
+    category: "SPA Frameworks"
   },
   {
-    id: "web-components-shadow-dom",
-    title: "Web Component Fundamentals",
+    id: "javascript-intro",
+    title: "Introduction to JavaScript",
     watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
-    authorId: "cory-house",
-    length: "5:10",
-    category: "HTML5"
+    authorId: "brandon-kearns",
+    length: "3 days",
+    category: "javascript"
+  },
+  {
+    id: "javascript-advanced",
+    title: "Advanced JavaScript",
+    watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
+    authorId: "mike-hopper",
+    length: "3 days",
+    category: "javascript"
   }
 ];
 

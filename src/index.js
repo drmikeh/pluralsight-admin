@@ -5,6 +5,7 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {loadCourses} from './actions/courseActions';
+import {loadAuthors} from './actions/authorActions';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -13,6 +14,7 @@ import App from './components/App';
 
 const store = configureStore();
 store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 ReactDOM.render(
   <Provider store={store}>

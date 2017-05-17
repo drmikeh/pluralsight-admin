@@ -6,6 +6,7 @@ import './App.css';
 import Header from './common/Header';
 import HomePage from './home/HomePage';
 import CoursesPage from './course/CoursesPage';
+import ManageCoursePage from './course/ManageCoursePage';
 import AboutPage from './about/AboutPage';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
         <Header/>
         <Route exact path="/" component={HomePage} />
         <Route path="/courses" component={CoursesPage} />
+        <Route path="/course/:id" component={ManageCoursePage} />
         <Route path="/about" component={AboutPage} />
       </div>
     );

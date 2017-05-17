@@ -5,19 +5,19 @@ import delay from './delay';
 // All calls return promises.
 const authors = [
   {
-    id: 'cory-house',
-    firstName: 'Cory',
-    lastName: 'House'
+    id: 'mike-hopper',
+    firstName: 'Mike',
+    lastName: 'Hopper'
   },
   {
-    id: 'scott-allen',
-    firstName: 'Scott',
-    lastName: 'Allen'
+    id: 'brandon-kearns',
+    firstName: 'Brandon',
+    lastName: 'Kearns'
   },
   {
-    id: 'dan-wahlin',
-    firstName: 'Dan',
-    lastName: 'Wahlin'
+    id: 'shane-barringer',
+    firstName: 'Shane',
+    lastName: 'Barringer'
   }
 ];
 
@@ -50,7 +50,7 @@ class AuthorApi {
         }
 
         if (author.id) {
-          const existingAuthorIndex = authors.findIndex(a => a.id == author.id);
+          const existingAuthorIndex = authors.findIndex(a => a.id === author.id);
           authors.splice(existingAuthorIndex, 1, author);
         } else {
           //Just simulating creation here.
@@ -69,7 +69,7 @@ class AuthorApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const indexOfAuthorToDelete = authors.findIndex(author => {
-          author.id == authorId;
+          return author.id === authorId;
         });
         authors.splice(indexOfAuthorToDelete, 1);
         resolve();

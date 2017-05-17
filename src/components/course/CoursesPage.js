@@ -6,11 +6,20 @@ import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 
 class CoursesPage extends React.Component {
+
+  redirectToAddCoursePage = () => {
+    this.props.history.push('/course');
+  }
+
   render() {
     const {courses} = this.props;       // destructuring
     return (
       <div>
         <h1>Courses</h1>
+        <input type="submit"
+               value="Add Course"
+               className="btn btn-primary"
+               onClick={this.redirectToAddCoursePage}/>
         <CourseList courses={courses}/>
       </div>
     );
