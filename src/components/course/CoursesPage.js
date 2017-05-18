@@ -8,7 +8,7 @@ import CourseList from './CourseList';
 class CoursesPage extends React.Component {
 
   redirectToAddCoursePage = () => {
-    this.props.history.push('/course');
+    this.props.history.push('/courses-new');
   }
 
   render() {

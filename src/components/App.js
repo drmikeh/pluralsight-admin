@@ -15,8 +15,9 @@ class App extends Component {
       <div className="App container-fluid">
         <Header/>
         <Route exact path="/" component={HomePage} />
-        <Route path="/courses" component={CoursesPage} />
-        <Route path="/course/:id" component={ManageCoursePage} />
+        <Route exact path="/courses" component={CoursesPage} />
+        <Route exact path="/courses-new" component={ManageCoursePage} />
+        <Route exact path="/courses/:id" component={ManageCoursePage} />
         <Route path="/about" component={AboutPage} />
       </div>
     );
