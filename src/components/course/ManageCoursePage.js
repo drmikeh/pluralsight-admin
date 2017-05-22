@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
+import toastr from 'toastr';
 
 class ManageCoursePage extends Component {
 
@@ -11,7 +12,8 @@ class ManageCoursePage extends Component {
     super(props);
     this.state = {
       course: Object.assign({}, props.course),
-      errors: {}
+      errors: {},
+      saving: false
     };
   }
 
@@ -30,7 +32,18 @@ class ManageCoursePage extends Component {
 
   saveCourse = (event) => {
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    this.setState({ saving: true });
+    this.props.actions.saveCourse(this.state.course)
+    .then( () => this.redirect() )
+    .catch( err => {
+      toastr.error(err);
+      this.setState({ saving: false });
+    });
+  }
+
+  redirect = () => {
+    this.setState({ saving: false });
+    toastr.success('Course saved');
     this.props.history.push('/courses');
   }
 
@@ -42,6 +55,7 @@ class ManageCoursePage extends Component {
         onSave={this.saveCourse}
         course={this.state.course}
         errors={this.state.errors}
+        saving={this.state.saving}
       />
     );
   }
