@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import toastr from 'toastr';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
-import toastr from 'toastr';
 
 toastr.options = {
   "closeButton": false,
@@ -26,12 +26,12 @@ toastr.options = {
 
 class ManageCoursePage extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       course: Object.assign({}, props.course),
       errors: {},
-      saving: false
+      saving: false,
     };
   }
 
@@ -43,17 +43,17 @@ class ManageCoursePage extends Component {
 
   updateCourseState = (event) => {
     const field = event.target.name;
-    let course = this.state.course;
+    const course = this.state.course;
     course[field] = event.target.value;
-    return this.setState({course: course});
+    return this.setState({ course });
   }
 
   saveCourse = (event) => {
     event.preventDefault();
     this.setState({ saving: true });
     this.props.actions.saveCourse(this.state.course)
-    .then( () => this.redirect() )
-    .catch( err => {
+    .then(() => this.redirect())
+    .catch((err) => {
       toastr.error(err);
       this.setState({ saving: false });
     });
@@ -82,11 +82,12 @@ class ManageCoursePage extends Component {
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  history: PropTypes.array.isRequired
 };
 
 function getCourseById(courses, id) {
-  const found = courses.filter( course => course.id === id );
+  const found = courses.filter(course => course.id === id);
   return found.length > 0 ? found[0] : null;
 }
 
@@ -96,14 +97,15 @@ function mapStateToProps(state, ownProps) {
   if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
-  const authorsFormattedForDropdown = state.authors.map( author => {
-    return {
+
+  const authorsFormattedForDropdown = state.authors.map(author =>
+    ({
       value: author.id,
-      text: author.firstName + ' ' + author.lastName
-    };
-  });
+      author: `${author.firstName} ${author.lastName}`
+    })
+  );
   return {
-    course: course,
+    course,
     authors: authorsFormattedForDropdown
   };
 }
