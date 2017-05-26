@@ -83,7 +83,7 @@ ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  history: PropTypes.array.isRequired
+  history: PropTypes.object.isRequired
 };
 
 function getCourseById(courses, id) {
@@ -101,7 +101,7 @@ function mapStateToProps(state, ownProps) {
   const authorsFormattedForDropdown = state.authors.map(author =>
     ({
       value: author.id,
-      author: `${author.firstName} ${author.lastName}`
+      text: `${author.firstName} ${author.lastName}`
     })
   );
   return {
