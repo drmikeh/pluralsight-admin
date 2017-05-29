@@ -5,7 +5,14 @@ import { shallow, mount, render } from 'enzyme';
 
 function getWrapper(saving) {
   const props = {
-    course: {},
+    course: {
+      id: '',
+      watchHref: '',
+      title: '',
+      authorId: '',
+      length: '',
+      category: ''
+    },
     allAuthors: [],
     saving: saving,
     errors: {},

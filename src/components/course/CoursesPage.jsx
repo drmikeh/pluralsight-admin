@@ -6,10 +6,6 @@ import CourseList from './CourseList';
 
 class CoursesPage extends React.Component {
 
-  componentWillMount() {
-    console.log('CoursesPage: componentWillMount');
-  }
-
   redirectToAddCoursePage = () => {
     this.props.history.push('/courses-new');
   }

@@ -5,27 +5,27 @@ import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
+import { authorsFormattedForDropdown } from '../../selectors/selectors';
 
 toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-center",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "2000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
+  closeButton: false,
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: 'toast-top-center',
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: 300,
+  hideDuration: 1000,
+  timeOut: '2000',
+  extendedTimeOut: '1000',
+  showEasing: 'swing',
+  hideEasing: 'linear',
+  showMethod: 'fadeIn',
+  hideMethod: 'fadeOut'
 };
 
-class ManageCoursePage extends Component {
-
+export class ManageCoursePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,8 +48,19 @@ class ManageCoursePage extends Component {
     return this.setState({ course });
   }
 
+  courseFormIsValid() {
+    const [formIsValid, errors] = this.state.course.title.length < 5 ?
+      [false, { title: 'Title must be at least 5 characters.' }] :
+      [true, {}];
+    this.setState({ errors });
+    return formIsValid;
+  }
+
   saveCourse = (event) => {
     event.preventDefault();
+    if (!this.courseFormIsValid()) {
+      return;
+    }
     this.setState({ saving: true });
     this.props.actions.saveCourse(this.state.course)
     .then(() => this.redirect())
@@ -98,15 +109,9 @@ function mapStateToProps(state, ownProps) {
     course = getCourseById(state.courses, courseId);
   }
 
-  const authorsFormattedForDropdown = state.authors.map(author =>
-    ({
-      value: author.id,
-      text: `${author.firstName} ${author.lastName}`
-    })
-  );
   return {
     course,
-    authors: authorsFormattedForDropdown
+    authors: authorsFormattedForDropdown(state.authors)
   };
 }
 

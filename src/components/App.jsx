@@ -11,7 +11,7 @@ import CoursesPage from './course/CoursesPage';
 import ManageCoursePage from './course/ManageCoursePage';
 import AboutPage from './about/AboutPage';
 
-const App = (props) =>
+const App = props =>
   (
     <Router>
       <main className="App container-fluid">
