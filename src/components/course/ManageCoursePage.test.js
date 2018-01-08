@@ -19,7 +19,9 @@ describe('CourseFormPage', () => {
       actions: { saveCourse: () => { return Promise.resolve(); }},
       history: {}
     };
-    const wrapper = mount(<ManageCoursePage {...props} />);
+    const wrapper = mount(
+      <ManageCoursePage {...props} />
+    );
     const saveButton = wrapper.find('input').last();
     expect(saveButton.prop('type')).toEqual('submit');
     saveButton.simulate('click');

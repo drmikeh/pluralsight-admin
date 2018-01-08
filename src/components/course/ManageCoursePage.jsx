@@ -2,28 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import toastr from 'toastr';
+import toastr from '../common/toastr';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import { authorsFormattedForDropdown } from '../../selectors/selectors';
-
-toastr.options = {
-  closeButton: false,
-  debug: false,
-  newestOnTop: false,
-  progressBar: false,
-  positionClass: 'toast-top-center',
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: 300,
-  hideDuration: 1000,
-  timeOut: '2000',
-  extendedTimeOut: '1000',
-  showEasing: 'swing',
-  hideEasing: 'linear',
-  showMethod: 'fadeIn',
-  hideMethod: 'fadeOut'
-};
 
 export class ManageCoursePage extends Component {
   constructor(props) {
@@ -45,6 +27,7 @@ export class ManageCoursePage extends Component {
     const field = event.target.name;
     const course = this.state.course;
     course[field] = event.target.value;
+    console.log('updated course field', field, 'with value', course[field]);
     return this.setState({ course });
   }
 

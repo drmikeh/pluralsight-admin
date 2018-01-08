@@ -35,10 +35,10 @@ describe('CourseForm', () => {
   it('contains a form', () => {
     expect(wrapper.find('form').length).toBe(1);
   });
-  it('has a save button is labeled "Save" when not saving', () => {
+  it('has a save button labeled "Save" when not saving', () => {
     expect(wrapper.find('input').props().value).toBe('Save');
   });
-  it('has a save button is labeled "Saving..." when saving', () => {
+  it('has a save button labeled "Saving..." when saving', () => {
     expect(savingWrapper.find('input').props().value).toBe('Saving...');
   });
 });
